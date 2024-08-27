@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+    <!-- Brukes midlertidig for å stilsette skjema -->
+    <style>
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      input,
+      textarea {
+        display: block;
+        width: 80%;
+        margin-top: 25px;
+      }
+      select {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- action => hvor sendes dataen -->
+    <!-- method => sende såkalt form-data via (POST) eller som
+    URL-variabler (url?name=Marius?age=36) via (GET) -->
+    <!-- GET må aldri bruks til å sende sensitiv data.
+    Egner seg ofte til bruk ved filtrering eller søk -->
+    <form action="/where-to-post" method="POST">
+
+      <!-- for => knytter label til inputfelt med samme id-navn -->
+      <label for="test">Test</label>
+
+      <!-- type => hva slags type (text, search, number, password, m.fl) -->
+      <!-- placeholder => hjelpetekst -->
+      <input id="test" type="text" placeholder="test" />
+
+      <!-- autofocus => feltet får fokus når siden besøkes -->
+      <!-- name => brukes for å refere til feltet ved "POST" -->
+      <!-- pattern => sjekker at teksten har en bestemt form -->
+      <!-- required => feltet må fylles ut. Nettleseren klager hvis ikke fylt ut -->
+      <input
+        autofocus="autofocus"
+        type="text"
+        name="username"
+        pattern="[a-zA-Z]{8}"
+        placeholder="Your username"
+        required
+      />
+
+      <!-- email => Sjekker at innholdet i feltet er e-post -->
+      <input type="email" name="email" placeholder="Your email" />
+
+      <!-- password => Skjuler teksten som skrives inn -->
+      <input type="password" name="password" placeholder="Your password" />
+
+      <!-- value => setter startverdien -->
+      <input type="number" name="age" placeholder="Your age" value="18" />
+
+      <!-- min => setter minimumsverdi -->
+      <!-- max => setter maksimumsverdi -->
+      <input
+        type="number"
+        name="age"
+        placeholder="Your age"
+        min="18"
+        max="110"
+      />
+
+      <!-- step => setter intervallet når vi endrer tallet (10, 15, 20 ...) -->
+      <input type="number" name="a-number" min="10" max="50" step="5" />
+
+      <!-- hidden => når vi vil sette en verdi som vi trenger som
+      brukeren ikke skal fylle inn eller vi kan bruke det for å redusere spam ved
+      å bruke den som såkalt Honeypot -->
+      <input type="hidden" name="tracking" value="set-dynamic" />
+
+      <!-- file => trigger nettleseren sin filhåndtering -->
+      <!-- multiple => kan laste opp flere filer -->
+      <!-- accept => godtar alle bildeformater -->
+      <input type="file" name="secret-documents" accept="image/*" multiple />
+
+      <!-- submit => trigger at skjema sendes -->
+      <input type="submit" value="Click me" />
+
+      <!-- radio => bruker name verdien til å knytte radio knappene sammen -->
+      <input type="radio" name="color" value="yellow" />
+      <input type="radio" name="color" value="red" />
+      <input type="radio" name="color" value="blue" />
+
+      <!-- checkbox => name her virker ikke på samme måte som radio.
+      Kan velge flere verdier -->
+      <input type="checkbox" name="color" value="yellow" />
+      <input type="checkbox" name="color" value="red" />
+      <input type="checkbox" name="color" value="blue" />
+
+      <!-- date => trigger date pickeren til nettleseren -->
+      <input type="date" name="birthday" />
+
+      <!-- slider => med minimumsverdi, maksverdi, startverdi (30) og intervall (10) -->
+      <input type="range" name="age" min="0" max="100" value="30" step="10" />
+
+      <!-- url => validerer at vi skriver inn en url med https -->
+      <input type="url" name="website" pattern="https://.*" />
+
+      <!-- rows og cols => styrer default utseende på tekstboksen -->
+      <textarea rows="20" cols="10" name="text"></textarea>
+
+      <!-- select => dropdown med tre verdier hvor den første verdien
+      ikke kan velges -->
+      <select name="color">
+        <option value="red" disabled>Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="black">Black</option>
+      </select>
+
+      <!-- list => brukes som select men egner seg når vi har lister -->
+      <input list="mylist" name="mylist" />
+      <datalist id="mylist">
+        <option value="CSS"></option>
+        <option value="HTML"></option>
+        <option value="PHP"></option>
+        <option value="Jquery"></option>
+        <option value="Wordpress"></option>
+      </datalist>
+
+      <!-- reset => nullstiller (fjerner) innholdet i skjema -->
+      <input type="reset" />
+    </form>
+  </body>
+</html>
