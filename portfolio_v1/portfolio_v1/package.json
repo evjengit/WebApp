@@ -3,13 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
+	"scripts": {
+		"dev:frontend": "vite",
+		"dev:server": "tsx --watch ./src/server.ts",
+		"dev": "concurrently -n frontend,server -c green,blue \"npm run dev:frontend\" \"npm run dev:server\""
+	},
   "devDependencies": {
+    "@types/node": "^20.11.1",
     "typescript": "^5.5.3",
-    "vite": "^5.4.1"
+    "vite": "^5.4.1",
+		"concurrently": "8.2.2",
+		"tsx": "^4.17.0"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.12.2",
+    "hono": "^4.5.9",
+    "zod": "^3.23.8"
   }
 }
