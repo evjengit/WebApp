@@ -45,6 +45,7 @@ const projects: Project[] = [];
     } catch (error) {
       console.error("Feil ved sending av data til serveren:", error);
     }
+    projectForm.reset()
   });
   
   function updateProjectsList() {
