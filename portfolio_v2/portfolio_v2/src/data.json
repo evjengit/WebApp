@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "Project A",
+        "description": "En web appikasjon for bildedeling.",
+        "image": "https://as1.ftcdn.net/v2/jpg/03/13/76/04/1000_F_313760421_txS6xrTba0qWshvmassQbCXbSlBpW5lG.jpg",
+        "repoUrl": "https://github.com/karlegil/project-a",
+        "dateCreated": "2024-08-15"
+      },
+      {
+        "id": "2",
+        "name": "Project B",
+        "description": "En timeplanorganisator for alle daglige hendelser.",
+        "image": "https://as1.ftcdn.net/v2/jpg/04/46/95/98/1000_F_446959837_ud38y0tq3BLXku5g72xfD4JT087Cz5R7.jpg",
+        "repoUrl": "https://github.com/karlegil/project-b",
+        "dateCreated": "2024-08-10"
+      },
+      {
+          "id": "3",
+          "name": "Project C",
+          "description": "En dungeons and dragons spillapplikasjon",
+          "image": "https://t3.ftcdn.net/jpg/05/04/79/10/240_F_504791075_wUcRE11vbiBLwGPdAKX9Y4cVNCPi22Ps.jpg",
+          "repoUrl": "https://github.com/karlegil/project-c",
+          "dateCreated": "2024-08-12"
+        }
+]

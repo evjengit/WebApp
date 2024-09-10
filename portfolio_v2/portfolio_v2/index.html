@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio V1</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a class="nav-a" href="#">Home</a>
+          </li>
+          <li>
+            <a class="nav-a" href="#">Projekter</a>
+          </li>
+        </ul>
+      </nav>
+      <h1>Prosjekter</h1>
+    </header>
+    <main>
+      <section id="project-form">
+        <h2>Opprett nytt prosjekt</h2>
+        <form action="./sampleData.json" method="post">
+          <label for="name">Navn</label>
+          <input id="name" name="name" type="text" placeholder="Projekt A" required>
+          <label for="repoUrl">Repository</label>
+          <input type="url" id="repoUrl" name="repoUrl" pattern="https://.*" placeholder="https://github.com/karlegil/project-a" required>
+          <label for="description">Beskrivelse</label>
+          <textarea name="description" id="description" placeholder="Mobilapp for bildedeling" required></textarea>
+          <label for="imageUrl">Bilde URL</label>
+          <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg" required>
+          <button id="submit-project" type="submit">Opprett prosjekt</button>
+        </form>
+      </section>
+      <section id="projects">
+      </section>
+    </main>
+    <footer>
+      <span>
+        <h4>Mail</h4>
+        <p>Karl@Egil.com</p>
+      </span>
+      <span>
+        <h4>Github</h4>
+        <p>https://github.com/karlegil</p>
+      </span>
+      <span>
+        <h4>LinkedIn</h4>
+        <p>https://www.linkedin.com/in/karlegil</p>
+      </span>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
