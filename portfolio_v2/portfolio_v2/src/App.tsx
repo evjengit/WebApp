@@ -1,14 +1,14 @@
-import './App.css'
+import './styles/App.css'
 import Layout from './components/Layout'
 import Form from './components/Form'
-import Title from './components/Title'
 import Projects from './components/Projects'
+import loadProjects from './components/Projects'
 
 function App() {
 
   return (
     <Layout>
-      <Form/>
+      <Form loadProjects={loadProjects} />
       <Projects/>
     </Layout>
   )

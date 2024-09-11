@@ -1,33 +1,30 @@
-import { useState } from "react";
-import ProjectCard from "./ProjectCard"
-import { type Project } from "./types"
+import { useState, useEffect } from "react";
+import ProjectCard from "./ProjectCard";
+import { type Project } from "./types";
 
-export default function Projects () {
+export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
 
-    const [projects, setProjects] = useState([])
+  const loadProjects = () => {
+    fetch("http://localhost:3999")
+      .then((response) => response.json())
+      .then((data: Project[]) => {
+        setProjects(data);
+      })
+      .catch((error: Error) => {
+        console.error("Feil ved henting av data fra serveren:", error);
+      });
+  };
 
-    function loadFromApi() {
-        fetch("http://localhost:3999")
-          .then((response) => response.json())
-          .then((data: Project) => {
-              projects.push(data);
-              updateProjectsList();
-          })
-          .catch((error: Error) => {
-            console.error("Feil ved henting av data fra serveren:", error);
-          });
-      }
-      
-      loadFromApi();
+  useEffect(() => {
+    loadProjects();
+  }, [projects]);
 
-    return (
-        
-        <section id="projects">
-            {projects?.map((project) => (
-                <ProjectCard project={project}/>
-            ))
-            }
-            
-        </section>
-    )
+  return (
+    <section id="projects">
+      {projects?.map((project) => (
+        <ProjectCard key={project.id} project={project} />
+      ))}
+    </section>
+  );
 }
