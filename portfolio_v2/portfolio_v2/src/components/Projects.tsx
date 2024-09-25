@@ -6,7 +6,7 @@ export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   const loadProjects = () => {
-    fetch("http://localhost:3999")
+    fetch("http://localhost:3999/projects")
       .then((response) => response.json())
       .then((data: Project[]) => {
         setProjects(data);

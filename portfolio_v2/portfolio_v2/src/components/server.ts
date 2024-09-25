@@ -36,7 +36,7 @@ const projects: Project[] = [
           }
 ]
 
-app.get("/", async (c) => {
+app.get("/projects", async (c) => {
     return c.json<Project[]>(projects);
 })
 
