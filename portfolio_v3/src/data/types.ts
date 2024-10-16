@@ -8,8 +8,8 @@ export const ProjectSchema = z.object({
   repoUrl: z.string(),
   dateCreated: z.coerce.date(),
   publishedAt: z.coerce.date().nullable(),
-  puclic: z.boolean().default(false),
-  status: z.string().default("Draft"),
+  public: z.boolean(),
+  status: z.string(),
   tags: z.array(z.string())
 });
 
@@ -22,3 +22,14 @@ export type Project = z.infer<typeof ProjectSchema>;
 export type CreateProject = z.infer<typeof ProjectCreateSchema>;
 
 export type ProjectStatus = "Draft" | "Published"
+
+export type User = {
+  id: string;
+  email: string;
+  name: string;
+  admin: string;
+};
+
+export type ContextVariables = {
+  user: User | null;
+};

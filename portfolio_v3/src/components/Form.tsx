@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CreateProject } from "./types";
+import { CreateProject } from "../data/types";
 import { ENDPOINTS } from "../config";
 
 export default function Form({ loadProjects }: { loadProjects: () => void }) {
@@ -19,10 +19,10 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
       description: formData.description,
       image: formData.imageUrl,
       dateCreated: new Date(),
-      "publishedAt": null,
-      "puclic": false,
-      "status": "Draft",
-      "tags": []
+      publishedAt: null,
+      public: false,
+      status: "Draft",
+      tags: []
     };
 
     try {
@@ -31,6 +31,7 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(newProject),
       });
 

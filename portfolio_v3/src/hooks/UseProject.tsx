@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { type Project } from "../components/types";
+import { type Project } from "../data/types";
 import { ENDPOINTS } from '../config';
 
-export function useProjects() {
+export function UseProjects() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   const loadProjects = () => {
-    fetch(ENDPOINTS.projects)
+    fetch(ENDPOINTS.projects, {credentials: "include"})
       .then((response) => response.json())
       .then((data: Project[]) => {
         setProjects(data);
@@ -18,9 +18,9 @@ export function useProjects() {
 
   useEffect(() => {
     loadProjects();
-  }, [projects]);
+  }, []);
 
   return { projects, loadProjects };
 }
 
-export default useProjects;
+export default UseProjects;

@@ -1,11 +1,11 @@
 {
-  "name": "portfolio_v2",
+  "name": "portfolio_v3",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev:frontend": "vite",
-    "dev:server": "tsx --watch ./src/components/server.ts",
+    "dev:server": "tsx --watch ./src/data/server.ts",
     "dev": "concurrently -n frontend,server -c green,blue \"npm run dev:frontend\" \"npm run dev:server\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

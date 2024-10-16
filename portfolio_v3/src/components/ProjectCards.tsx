@@ -1,4 +1,4 @@
-import { Project } from "./types";
+import { Project } from "../data/types";
 import { format } from "date-fns"
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -13,6 +13,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               View Repository
             </a>
             <p>Opprettet: {format(project.dateCreated, "dd/MM/yyyy")}</p>
+            <button id="publish-project" type="submit">Publish</button>
           </div>
         </div>
       </article>

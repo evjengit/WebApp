@@ -2,13 +2,22 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serveStatic } from "@hono/node-server/serve-static";
-import { type Project } from "./types";
+import { ContextVariables, type Project } from "./types";
+import { authenticate } from "./auth";
+
+const app = new Hono<{ Variables: ContextVariables }>();
+
+app.use(
+  "/*",
+   cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }))
 
 
-const app = new Hono();
-
-app.use("/*", cors())
 app.use("/*", serveStatic({root: "./"} ));
+
+
 
 const projects: Project[] = [
         { "id": crypto.randomUUID(),
@@ -18,7 +27,7 @@ const projects: Project[] = [
           "repoUrl": "https://github.com/karlegil/project-a",
           "dateCreated": new Date(2024, 8, 15),
           "publishedAt": null,
-          "puclic": false,
+          "public": true,
           "status": "Draft",
           "tags": []
         },
@@ -30,7 +39,7 @@ const projects: Project[] = [
           "repoUrl": "https://github.com/karlegil/project-b",
           "dateCreated": new Date(2024, 8, 10),
           "publishedAt": null,
-          "puclic": false,
+          "public": false,
           "status": "Draft",
           "tags": []
         },
@@ -42,15 +51,19 @@ const projects: Project[] = [
             "repoUrl": "https://github.com/karlegil/project-c",
             "dateCreated": new Date(2024, 8, 12),
             "publishedAt": null,
-            "puclic": false,
+            "public": false,
             "status": "Draft",
             "tags": []
           }
 ]
 
-app.get("/projects", async (c) => {
-    return c.json<Project[]>(projects);
-})
+app.get("/projects", authenticate(), async (c) => {
+  const user = c.get("user");
+  console.log(user)
+  const filteredProjects = projects.filter(project => project.public || user?.admin === "true");
+  
+  return c.json<Project[]>(filteredProjects);
+});
 
 app.post("/add", async (c) => {
     const Project = await c.req.json();

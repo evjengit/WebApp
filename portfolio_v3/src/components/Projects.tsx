@@ -1,8 +1,8 @@
 import ProjectCard from "./ProjectCards";
-import useProjects from "../hooks/useProject";
+import UseProjects from "../hooks/UseProject";
 
 export default function Projects() {
-  const { projects } = useProjects();
+  const { projects } = UseProjects();
 
   return (
     <section id="projects">
