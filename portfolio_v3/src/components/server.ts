@@ -16,7 +16,11 @@ const projects: Project[] = [
           "description": "En web appikasjon for bildedeling.",
           "image": "https://as1.ftcdn.net/v2/jpg/03/13/76/04/1000_F_313760421_txS6xrTba0qWshvmassQbCXbSlBpW5lG.jpg",
           "repoUrl": "https://github.com/karlegil/project-a",
-          "dateCreated": new Date(2024, 8, 15)
+          "dateCreated": new Date(2024, 8, 15),
+          "publishedAt": null,
+          "puclic": false,
+          "status": "Draft",
+          "tags": []
         },
         {
           "id": crypto.randomUUID(),
@@ -24,7 +28,11 @@ const projects: Project[] = [
           "description": "En timeplanorganisator for alle daglige hendelser.",
           "image": "https://as1.ftcdn.net/v2/jpg/04/46/95/98/1000_F_446959837_ud38y0tq3BLXku5g72xfD4JT087Cz5R7.jpg",
           "repoUrl": "https://github.com/karlegil/project-b",
-          "dateCreated": new Date(2024, 8, 10)
+          "dateCreated": new Date(2024, 8, 10),
+          "publishedAt": null,
+          "puclic": false,
+          "status": "Draft",
+          "tags": []
         },
         {
             "id": crypto.randomUUID(),
@@ -32,7 +40,11 @@ const projects: Project[] = [
             "description": "En dungeons and dragons spillapplikasjon",
             "image": "https://t3.ftcdn.net/jpg/05/04/79/10/240_F_504791075_wUcRE11vbiBLwGPdAKX9Y4cVNCPi22Ps.jpg",
             "repoUrl": "https://github.com/karlegil/project-c",
-            "dateCreated": new Date(2024, 8, 12)
+            "dateCreated": new Date(2024, 8, 12),
+            "publishedAt": null,
+            "puclic": false,
+            "status": "Draft",
+            "tags": []
           }
 ]
 

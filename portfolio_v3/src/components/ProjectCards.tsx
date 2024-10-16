@@ -2,7 +2,6 @@ import { Project } from "./types";
 import { format } from "date-fns"
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const formattedDate = format(project.dateCreated, "dd/MM/yyyy")
     return (
       <article>
         <h3>{project.name}</h3>
@@ -13,7 +12,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
               View Repository
             </a>
-            <p>Opprettet: {formattedDate}</p>
+            <p>Opprettet: {format(project.dateCreated, "dd/MM/yyyy")}</p>
           </div>
         </div>
       </article>

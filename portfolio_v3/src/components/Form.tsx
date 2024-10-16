@@ -18,7 +18,11 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
       repoUrl: formData.repoUrl,
       description: formData.description,
       image: formData.imageUrl,
-      dateCreated: new Date()
+      dateCreated: new Date(),
+      "publishedAt": null,
+      "puclic": false,
+      "status": "Draft",
+      "tags": []
     };
 
     try {

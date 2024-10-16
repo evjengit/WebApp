@@ -7,9 +7,10 @@ export const ProjectSchema = z.object({
   image: z.string(),
   repoUrl: z.string(),
   dateCreated: z.coerce.date(),
-  publishedAt: z.coerce.date(),
-  puclic: z.boolean(),
-  status: z.string()
+  publishedAt: z.coerce.date().nullable(),
+  puclic: z.boolean().default(false),
+  status: z.string().default("Draft"),
+  tags: z.array(z.string())
 });
 
 export const ProjectCreateSchema = ProjectSchema.omit({ id: true });
