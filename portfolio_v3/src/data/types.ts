@@ -10,7 +10,8 @@ export const ProjectSchema = z.object({
   publishedAt: z.coerce.date().nullable(),
   public: z.boolean(),
   status: z.string(),
-  tags: z.array(z.string())
+  tags: z.array(z.string()),
+  user_id: z.string()
 });
 
 export const ProjectCreateSchema = ProjectSchema.omit({ id: true });

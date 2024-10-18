@@ -22,7 +22,8 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
       publishedAt: null,
       public: false,
       status: "Draft",
-      tags: []
+      tags: [],
+      user_id: "",
     };
 
     try {

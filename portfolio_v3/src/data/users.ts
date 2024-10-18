@@ -7,7 +7,7 @@ const users: User[] = [
     id: "1",
     email: "gunnar@test.no",
     name: "Gunnar",
-    admin: "false"
+    admin: "true"
   },
   {
     id: "2",

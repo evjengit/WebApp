@@ -29,7 +29,8 @@ const projects: Project[] = [
           "publishedAt": null,
           "public": true,
           "status": "Draft",
-          "tags": []
+          "tags": [],
+          "user_id": "1"
         },
         {
           "id": crypto.randomUUID(),
@@ -41,7 +42,8 @@ const projects: Project[] = [
           "publishedAt": null,
           "public": false,
           "status": "Draft",
-          "tags": []
+          "tags": [],
+          "user_id": "2"
         },
         {
             "id": crypto.randomUUID(),
@@ -53,7 +55,8 @@ const projects: Project[] = [
             "publishedAt": null,
             "public": false,
             "status": "Draft",
-            "tags": []
+            "tags": [],
+            "user_id": "3"
           }
 ]
 
@@ -65,11 +68,38 @@ app.get("/projects", authenticate(), async (c) => {
   return c.json<Project[]>(filteredProjects);
 });
 
+// mangler validering: id ikke gyldig, student finnes ikke
+//  fetch(´${API_BASE_URL.projects}/${id}´, {method: 'GET'})
+app.get('/projects/:id', (c) => {
+  const id = c.req.param("id")
+  const project = projects.filter((project) => project.id === id)
+  return c.json(project);
+})
+
 app.post("/add", async (c) => {
     const Project = await c.req.json();
     console.log(Project)
     projects.push(Project)
     return c.json<Project[]>(projects, { status: 201 });
+})
+
+//   fetch({API_BASE_URL.projects}, {method: 'DELETE'}) @@@ mangler headere
+app.get('/projects/:id', (c) => {
+  const id = c.req.param("id")
+  const filteredprojects = projects.filter(
+    (project) => project.id !== id
+  )
+  return c.json(filteredprojects);
+})
+
+// fetch(´${API_BASE_URL.projects}/${id}´, {method: 'PATCH', body: JSON.stringify(data)})
+app.patch('/projects/:id', async (c) => {
+  const id = c.req.param("id")
+  const { name } = await c.req.json()
+  const updatedProjects = projects.map((project) =>
+    project.id === id ? { ...project, name } : project
+  );
+  return c.json(updatedProjects);
 })
 
 const port = 3999;
