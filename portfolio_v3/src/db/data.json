@@ -1,5 +1,24 @@
-
 {
+    "users": [
+        {
+            "id": "1",
+            "email": "gunnar@test.no",
+            "name": "Gunnar",
+            "admin": "1"
+        },
+        {
+            "id": "2",
+            "email": "knut@test.no",
+            "name": "Knut",
+            "admin": "1"
+        },
+        {
+            "id": "3",
+            "email": "mia@test.no",
+            "name": "Mia",
+            "admin": "0"
+        }
+    ],
     "projects": [
         { 
             "id": "1",
@@ -9,9 +28,8 @@
             "repoUrl": "https://github.com/karlegil/project-a",
             "dateCreated": "2024-01-01T12:00:00Z",
             "publishedAt": "",
-            "public": 1,
+            "public": "1",
             "status": "Draft",
-            "tags": [],
             "user_id": "1"
         },
         {
@@ -22,9 +40,8 @@
             "repoUrl": "https://github.com/karlegil/project-b",
             "dateCreated": "2024-02-01T12:00:00Z",
             "publishedAt": "",
-            "public": 0,
+            "public": "0",
             "status": "Draft",
-            "tags": [],
             "user_id": "2"
         },
         {
@@ -35,30 +52,9 @@
             "repoUrl": "https://github.com/karlegil/project-c",
             "dateCreated": "2024-03-01T12:00:00Z",
             "publishedAt": "",
-            "public": 0,
+            "public": "1",
             "status": "Draft",
-            "tags": [],
             "user_id": "2"
         }
-    ],
-    "users": [
-        {
-            "id": "1",
-            "email": "gunnar@test.no",
-            "name": "Gunnar",
-            "admin": "true"
-          },
-          {
-            "id": "2",
-            "email": "knut@test.no",
-            "name": "Knut",
-            "admin": "true"
-          },
-          {
-            "id": "3",
-            "email": "mia@test.no",
-            "name": "Mia",
-            "admin": "false"
-          }
     ]
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { CreateProject } from "../data/types";
+import { CreateProject } from "../features/project.schema";
 import { ENDPOINTS } from "../config";
+import { createId } from "../features/project.mapper";
 
 export default function Form({ loadProjects }: { loadProjects: () => void }) {
   const [formData, setFormData] = useState({
@@ -14,15 +15,15 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
     event.preventDefault();
 
     const newProject: CreateProject = {
+      id: createId(),
       name: formData.name,
       repoUrl: formData.repoUrl,
       description: formData.description,
       image: formData.imageUrl,
-      dateCreated: new Date(),
-      publishedAt: null,
-      public: false,
+      dateCreated: new Date().toISOString(),
+      publishedAt: "",
+      public: "false",
       status: "Draft",
-      tags: [],
       user_id: "",
     };
 

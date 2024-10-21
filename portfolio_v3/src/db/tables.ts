@@ -6,7 +6,7 @@ export const createTables = (db: DB) => {
             id TEXT PRIMARY KEY,
             email TEXT NOT NULL,
             name TEXT NOT NULL,
-            admin INTEGER NOT NULL
+            admin TEXT NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS projects (
@@ -17,9 +17,8 @@ export const createTables = (db: DB) => {
           repoUrl TEXT NOT NULL,
           dateCreated TEXT NOT NULL,
           publishedAt TEXT,
-          public INTEGER NOT NULL,
+          public TEXT NOT NULL,
           status TEXT NOT NULL,
-          tags TEXT NOT NULL,
           user_id TEXT NOT NULL,
           FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );

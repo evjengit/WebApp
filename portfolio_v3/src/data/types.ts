@@ -1,28 +1,4 @@
-import { z } from "zod";
-
-export const ProjectSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string(),
-  image: z.string(),
-  repoUrl: z.string(),
-  dateCreated: z.coerce.date(),
-  publishedAt: z.coerce.date().nullable(),
-  public: z.boolean(),
-  status: z.string(),
-  tags: z.array(z.string()),
-  user_id: z.string()
-});
-
-export const ProjectCreateSchema = ProjectSchema.omit({ id: true });
-
-export const ProjectArraySchema = z.array(ProjectSchema);
-
-export type Project = z.infer<typeof ProjectSchema>;
-
-export type CreateProject = z.infer<typeof ProjectCreateSchema>;
-
-export type ProjectStatus = "Draft" | "Published"
+import { Pagination } from "../lib/query";
 
 export type User = {
   id: string;
@@ -34,3 +10,17 @@ export type User = {
 export type ContextVariables = {
   user: User | null;
 };
+
+export type Result<T> =
+  | {
+      success: true;
+      data: T;
+      pagination?: Pagination;
+    }
+  | {
+      success: false;
+      error: {
+        code: string;
+        message: string;
+      };
+    };

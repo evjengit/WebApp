@@ -1,7 +1,8 @@
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { Project, User } from "../data/types";
+import { User } from "../data/types";
 import { DB } from "./db";
+import { Project } from "../features/project.schema";
 
 export const seed = async (db: DB) => {
     const path = join(import.meta.dirname, "data.json");
@@ -16,7 +17,7 @@ export const seed = async (db: DB) => {
     `);
 
     const insertProject = db.prepare(`
-        INSERT INTO projects (id, name, description, image, repoUrl, dateCreated, publishedAt, public, status, tags, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO projects (id, name, description, image, repoUrl, dateCreated, publishedAt, public, status, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
   
     db.transaction(() => {
@@ -37,8 +38,7 @@ export const seed = async (db: DB) => {
             project.dateCreated, 
             project.publishedAt, 
             project.public, 
-            project.status, 
-            JSON.stringify(project.tags),
+            project.status,
             project.user_id)
       }
     })();
