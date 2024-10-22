@@ -40,13 +40,13 @@ export const createProjectResponse = (project: Project): ProjectResponse => {
       id: project.id ?? createId(),
       name: project.name ?? "",
       description: project.description ?? "",
-      image: project.image ?? "",
+      image: project.image && project.image.trim() !== "" ? project.image : "https://www.celoxis.com/cassets/img/pmc/project-management.png",
       repoUrl: project.repoUrl ?? "",
-      dateCreated: project?.dateCreated ?? "",
-      publishedAt: project?.publishedAt ?? "",
+      dateCreated: project?.dateCreated ?? new Date().toISOString(),
+      publishedAt: project?.publishedAt ?? null,
       public: project?.public ?? "1",
       status: project?.status ?? "Draft",
-      user_id: project?.user_id ?? ""
+      user_id: project?.user_id ?? "1"
     };
   };
   
@@ -60,8 +60,8 @@ export const createProjectResponse = (project: Project): ProjectResponse => {
       image: project.image,
       repoUrl: project.repoUrl,
       dateCreated: project.dateCreated,
-      publishedAt: project.publishedAt,
-      public: project.public,
+      publishedAt: project.publishedAt || null,
+      public: project.public === "1" ? "1" : "0",
       status: project.status,
       user_id: project.user_id
     };

@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { CreateProject } from "../features/project.schema";
+import { CreateProject, Project } from "../features/project.schema";
 import { ENDPOINTS } from "../config";
 import { createId } from "../features/project.mapper";
 
-export default function Form({ loadProjects }: { loadProjects: () => void }) {
+interface FormProps {
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
+  loadProjects: () => void;
+}
+
+export default function Form({ loadProjects, setProjects }: FormProps) {
   const [formData, setFormData] = useState({
     name: "",
     repoUrl: "",
@@ -14,6 +19,8 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const userId = "1";
+
     const newProject: CreateProject = {
       id: createId(),
       name: formData.name,
@@ -21,10 +28,10 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
       description: formData.description,
       image: formData.imageUrl,
       dateCreated: new Date().toISOString(),
-      publishedAt: "",
-      public: "false",
+      publishedAt: null,
+      public: "0",
       status: "Draft",
-      user_id: "",
+      user_id: userId,
     };
 
     try {
@@ -37,16 +44,19 @@ export default function Form({ loadProjects }: { loadProjects: () => void }) {
         body: JSON.stringify(newProject),
       });
 
+      console.log('Server response:', response);
+
       if (response.ok) {
         const data = await response.json();
         console.log("Prosjektet ble lagt til:", data);
+        setProjects((prevProjects) => [...prevProjects, newProject]);
         setFormData({
           name: "",
           repoUrl: "",
           description: "",
           imageUrl: "",
         });
-        loadProjects();
+        loadProjects()
       } else {
         console.error("Feil ved lagring av prosjekt:", response.statusText);
       }

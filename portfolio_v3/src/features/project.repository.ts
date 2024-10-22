@@ -99,8 +99,19 @@ export const createProjectRepository = (db: DB) => {
       const project = toDb(data);
 
       const query = db.prepare(`
-        INSERT INTO projects (id, name, description, repoUrl, dateCreated)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO projects (
+        id, 
+        name, 
+        description, 
+        repoUrl,
+        image, 
+        dateCreated, 
+        publishedAt, 
+        public,
+        status,
+        user_id
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       query.run(
@@ -108,13 +119,19 @@ export const createProjectRepository = (db: DB) => {
         project.name,
         project.description,
         project.repoUrl,
-        project.dateCreated
+        project.image,
+        project.dateCreated,
+        project.publishedAt,
+        project.public,
+        project.status,
+        project.user_id
       );
       return {
         success: true,
         data: project.id,
       };
     } catch (error) {
+      console.log("Database Error", error)
       return {
         success: false,
         error: {
